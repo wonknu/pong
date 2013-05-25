@@ -1,0 +1,13 @@
+{
+    "name": "pong"
+    ,"version": "0.0.1"
+    ,"private": true
+    ,"scripts": {
+    }
+    ,"dependencies": {
+        "express": "*"
+        ,"socket.io": "*"
+        ,"jade": "*"
+        ,"socket.io-client" : "*"
+    }
+}
