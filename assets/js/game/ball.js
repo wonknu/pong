@@ -10,8 +10,8 @@
  */
 
 define(
-    ['createjs'],
-    function ()
+    ['VAR', 'createjs'],
+    function (VAR)
     {
         /**
          * Create a button
@@ -19,7 +19,7 @@ define(
         var create = function ()
         {
             this.ball = new createjs.Shape();
-            this.ball.graphics.beginFill(this.color).drawCircle(this.x, this.y, this.radius);
+            this.ball.graphics.beginFill(this.color).drawCircle(0, 0, this.radius);
             this.ball.x = this.x;
             this.ball.y = this.y;
             this.container.addChild(this.ball);
@@ -47,20 +47,27 @@ define(
             };
         };
         
+        var reset = function (x, y)
+        {
+            this.ball.x = window.innerWidth * .5;
+            this.ball.y = window.innerHeight * .5;
+        };
+        
         /**
          * Constructor create a button
          * @param {Object} container, new createjs.Container()
          */
         return function (container)
         {
-            this.x = 0;
-            this.y = 0;
-            this.radius = 15;
+            this.x = window.innerWidth * .5;
+            this.y = window.innerHeight * .5;
+            this.radius = VAR.BALL.WIDTH;
             this.color = "#FFF";
             
             this.container = container;
             this.create = create;
             this.position = position;
+            this.reset = reset;
             
             this.create(); // Call constructor
             return this;

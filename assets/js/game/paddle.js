@@ -10,8 +10,8 @@
  */
 
 define(
-    ['createjs'],
-    function ()
+    ['VAR', 'createjs'],
+    function (VAR)
     {
         /**
          * Create a button
@@ -62,11 +62,11 @@ define(
         return function (container, side)
         {
             this.side = side || 'LEFT';
-            this.width = (window.innerWidth * .05);
-            this.height = (window.innerHeight * .3);
+            this.width = (window.innerWidth * VAR.PADDLE.PERCENT_WIDTH);
+            this.height = (window.innerHeight * VAR.PADDLE.PERCENT_HEIGHT);
             this.x = (this.side == 'LEFT') ?
-            			(window.innerWidth * .01) :
-            			window.innerWidth - ((window.innerWidth * .01) + this.width);
+            			(window.innerWidth * VAR.PADDLE.PERCENT_PADDING) :
+            			window.innerWidth - ((window.innerWidth * VAR.PADDLE.PERCENT_PADDING) + this.width);
             this.y = (window.innerHeight * 0.5) - (this.height * 0.5);
             this.color = "#FFF";
             

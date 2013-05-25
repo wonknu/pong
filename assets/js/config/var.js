@@ -10,6 +10,15 @@ define(
             EVENTS : {
                 START_GAME : "startGame"
             },
+            BALL : {
+            	WIDTH : 12,
+            	SPEED : 5
+            },
+            PADDLE : {
+            	PERCENT_WIDTH : .02,
+            	PERCENT_HEIGHT : .4,
+            	PERCENT_PADDING : .01
+            },
             URL : "http://192.168.1.34:1337/"
         };
     }

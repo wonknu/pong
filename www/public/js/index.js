@@ -20,18 +20,27 @@ $(document).ready(function ()
         socket.on('connect', function ()
         {
             console.log('connect');
+            socket.emit('wanttoplay');
+	        /**
+	         * tell node.js to connect and wait -> scroll up : socket.on('connect'....
+	         */
+	        $('body').on('mousemove touchmove', function(e)
+	        {
+	        	var y;
+	            e.preventDefault();
+	            if(e.originalEvent.touches !== null && e.originalEvent.touches !== undefined)
+	            	y = (e.originalEvent.touches[0].pageY * 100) / window.innerHeight;
+	            else 
+	            	y = (e.originalEvent.pageY * 100) / window.innerHeight;
+	            
+	            socket.emit('move', { y : y });
+	        });
+	        
+        	socket.on('roomfull', function ()
+        	{
+        		alert('There are already two players using Pong');
+        	});
         });
         
-        /**
-         * tell node.js to connect and wait -> scroll up : socket.on('connect'....
-         */
-        //socket.emit('logged', { room : PG_C.api_key, user : PG_C.user });
-        
-        $('body').on('mousemove touchmove', function(e)
-        {
-            e.preventDefault();
-            var y = (e.originalEvent.touches[0].pageY * 100) / window.innerHeight;
-            socket.emit('move', { y : y });
-        });
     }
 });

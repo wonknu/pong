@@ -37,31 +37,33 @@ console.log("Configure sockets.io");
 /* a user connect to our I/O server */
 io.sockets.on('connection', function (client)
 {
-	console.log("nouvelle utilisateur conncecté a un pong!\n"); // sortie console sur serveur
-    /*
-	client.on('logged', function (data) // data must contain
-	{
-	    
-	    return;
-        if(!util.NotNull(data.room, "") || !util.NotNull(data.user, "")) return;
-        // push user to the room Array ( and create hes room in the Array if it doesn't exist )
-        if(!util.NotNull(allClients[data.room])) allClients[data.room] = [];
-        allClients[data.room].push(client);
-        
-	    client.join(data.room); // Make the client user join the requested room
-	    client.currentRoom = data.room; // Save hes room name so he know it
-        client.userId = data.user;
-	    //client.emit('notification', {test : 'test'});
-	});
-	*/
+    client.on('wanttoplay', function (data) // data must contain
+    {
+    	console.log('fuuuuuuuuuuuuuuu');
+		if(player1 == null) player1 = client;
+		else if(player2 == null) player2 = client;
+		else{
+			client.emit('roomfull');
+		}
+		
+    });
+    
+	console.log("nouvelle utilisateur connecté a un pong!\n"); // sortie console sur serveur
     client.on('move', function (data) // data must contain
     {
+		if(player1 == client) data.player = 1;
+		if(player2 == client) data.player = 2;
         client.broadcast.emit('move', data);
     });
 	// Listen for connection close to remove the user from the room he was
 	client.on('disconnect', function ()
 	{
-	    //player disconneted
+		if(player1 == client){
+			player1 = null;
+		}
+		if(player2 == client){
+			player2 = null;
+		}
     });
     
 });

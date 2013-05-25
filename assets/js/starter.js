@@ -4,6 +4,7 @@ require.config({
         VAR: 'assets/js/config/var',
         preloader: 'assets/js/utils/preloader',
         button: 'assets/js/components/button',
+        text: 'assets/js/components/text',
         ball: 'assets/js/game/ball',
         paddle: 'assets/js/game/paddle',
         introView: 'assets/js/views/intro',
