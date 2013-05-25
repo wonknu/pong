@@ -48,9 +48,9 @@ define(
             buttonPlay_hard.container.onPress = function (evt)
             {
 	            VAR.BALL.WIDTH = 5;
-	            VAR.BALL.SPEED = 11;
+	            VAR.BALL.SPEED = 15;
 	            VAR.PADDLE.PERCENT_WIDTH = .015;
-            	VAR.PERCENT_HEIGHT = .3;
+            	VAR.PADDLE.PERCENT_HEIGHT = .2;
             	remove();
             };
         };
