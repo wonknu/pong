@@ -19,7 +19,8 @@ define(
             	PERCENT_HEIGHT : .4,
             	PERCENT_PADDING : .01
             },
-            URL : "http://192.168.1.34:1337/"
+            //URL : "http://192.168.1.34:1337/"
+            URL : "http://192.168.1.108:1337/"
         };
     }
 ); 

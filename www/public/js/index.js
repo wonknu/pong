@@ -1,6 +1,6 @@
 var PONG = PONG || {
-	URL : "http://192.168.1.34:1337/"
-	//URL : "http://192.168.1.108:1337/"
+	//URL : "http://192.168.1.34:1337/"
+	URL : "http://192.168.1.108:1337/"
 };
 
 $(document).ready(function ()
